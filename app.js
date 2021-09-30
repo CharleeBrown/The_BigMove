@@ -9,7 +9,7 @@ const express = require('express');
 const app = express();
 const collection = client.db("mainDB").collection("CalLabBooking");
 
-const port = process.env.PORT || 3000;
+let port =  3000;
 app.use(parser.json());
 app.use(parser.urlencoded({extended:true}));
 app.use(upload.array());
@@ -45,7 +45,5 @@ app.get('/', (req, res, next) => {
                 .catch(err => console.error(`Failed to find documents: ${err}`))
                         });
     });
-app.listen(function (port, err){
-    console.log('Listening on port' + port);
-}); 
+app.listen(port);
 
